@@ -9,7 +9,6 @@ import { Link, useNavigate } from "react-router-dom";
 export const Register = () => {
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
-  const [number, setNumber]= (0)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;

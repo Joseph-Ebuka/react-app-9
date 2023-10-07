@@ -33,7 +33,7 @@ const Search = () => {
       querySnapshot.forEach((doc) => {
         matchingUsers.push(doc.data());
         console.log(matchingUsers);
-        setUser(matchingUsers);
+        setUser(doc.data());
       });
     } catch (err) {
       setErr(true);
