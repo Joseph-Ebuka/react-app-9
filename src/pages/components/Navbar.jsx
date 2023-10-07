@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { auth } from "../../firebase";
 import { AuthContext } from "../../context/AuthContext";
 import { useState } from "react";
+import logo from '../images/ebukalogo.png'
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
   const [details, setDetails] = useState(false);
@@ -12,7 +13,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <span className="navlogo">Ebuka Chat</span>
+      <span className="navlogo"><img src={logo} alt="logo" /></span>
       <span className="user">
         <img
           src={currentUser.photoURL}
