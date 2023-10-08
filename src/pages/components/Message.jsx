@@ -23,7 +23,6 @@ const Message = ({ message }) => {
     }
   };
 
-  // console.log(message.date);
   const messageTime = message.date;
   const normalDate = new Date(messageTime * 1000); // Convert to milliseconds by multiplying by 1000
 

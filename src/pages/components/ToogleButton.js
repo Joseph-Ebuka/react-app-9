@@ -4,7 +4,7 @@ import { BiArrowBack } from "react-icons/bi";
 const ToogleButton = () => {
     
   const { toggleSidebar } = useSidebar();
-  return <BiArrowBack onClick={toggleSidebar}  style={{
+  return <BiArrowBack className="togglebutton" onClick={toggleSidebar}  style={{
     fontSize:"40px"
   }}/>;
 };

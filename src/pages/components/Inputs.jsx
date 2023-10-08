@@ -12,7 +12,7 @@ import {
 import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-
+import { sent, recived } from "../../assets";
 const Inputs = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
@@ -21,6 +21,7 @@ const Inputs = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
   const imgId = uuid().toString();
+  const audio = new Audio(sent);
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -47,11 +48,13 @@ const Inputs = () => {
                 });
               }
             );
+            audio.play();
           }, 1000);
         }
       );
     } else {
       if (text !== "") {
+        audio.play();
         await updateDoc(doc(db, "chats", data.chatId), {
           messages: arrayUnion({
             id: uuid(),
@@ -72,6 +75,7 @@ const Inputs = () => {
           },
           [data.chatId + ".date"]: serverTimestamp(),
         });
+        
       } else {
         alert("can not send an empty text please input text");
       }
@@ -134,12 +138,10 @@ const Inputs = () => {
               alt=""
             />
           </label>
-          <button onClick={handleSend} onKeyDown={handleSend}>Send</button>
+          <button onClick={handleSend} onKeyDown={handleSend}>
+            Send
+          </button>
         </div>
-        {/* <EmojiPicker onEmojiClick={handleEmojiClick} />
-      {chosenEmoji && (
-        <p>You selected: {chosenEmoji.native}</p>
-      )} */}
       </div>
     </form>
   );

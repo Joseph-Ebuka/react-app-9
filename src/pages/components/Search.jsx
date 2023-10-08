@@ -34,7 +34,7 @@ const Search = () => {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         matchingUsers.push(doc.data());
-        console.log(matchingUsers);
+      
         setUser(doc.data());
       });
     } catch (err) {
@@ -44,7 +44,6 @@ const Search = () => {
       const querySnapshot = await getDocs(q2);
       querySnapshot.forEach((doc) => {
         setUser(doc.data());
-        console.log(user);
       });
     } catch (err) {
       setErr(true);

@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 export const Register = () => {
   const navigate = useNavigate();
   const [err, setErr] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     const displayName = e.target[0].value;
@@ -32,7 +33,6 @@ export const Register = () => {
                 await updateProfile(res.user, {
                   displayName,
                   photoURL: downloadURL,
-                  
                 });
                 await setDoc(doc(db, "users", res.user.uid), {
                   uid: res.user.uid,
@@ -47,9 +47,18 @@ export const Register = () => {
         }
       );
       navigate("/");
-      console.log(res)
     } catch (err) {
       console.error(err);
+      setErr(true);
+      if (err.message.includes("already-in-use")) {
+        setErrorMessage("Email already in use ");
+      } else if (err.message.includes("missing-password")) {
+        setErrorMessage("Password cannot be empty");
+      } else if (err.message.includes("invalid-email")) {
+        setErrorMessage("Email is not valid");
+      }else{
+        setErrorMessage("Something Went wrong Contact Support !!!")
+      }
     }
   };
   return (
@@ -66,6 +75,8 @@ export const Register = () => {
             id="file"
             style={{ display: "none" }}
             accept="image/*"
+            required
+            name="file"
           />
           <label
             htmlFor="file"
@@ -81,7 +92,7 @@ export const Register = () => {
             </p>
           </label>
           <button className="sign-up">Sign up</button>
-          {err && <span style={{ color: "red" }}>Something went wrong</span>}
+          {err && <span style={{ color: "red" }}>{errorMessage}</span>}
         </form>
         <p className="needAccount">
           Do you have an account?<Link to="/login">Login</Link>{" "}
