@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import Messages from "./Messages";
 import { ChatContext } from "../../context/ChatContext";
+import ToogleButton from "./ToogleButton";
+import { useSidebar } from "../../context/SideBarContext";
 
 const Chat = () => {
   const { data } = useContext(ChatContext);
-
+  const { isSidebarVisible } = useSidebar();
   return (
-    <div className="chat">
+    <div className={`chat ${isSidebarVisible && "dontShowChat"}`}>
       <div className="chatInfo">
         <span>
-          <img src={data?.user.photoURL} alt="" /> {data?.user.displayName}
+          <ToogleButton /> <img src={data?.user.photoURL} alt="" />{" "}
+          {data?.user.displayName}
         </span>
         <div className="chatIcons">
           <img

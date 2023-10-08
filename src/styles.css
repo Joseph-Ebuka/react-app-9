@@ -72,7 +72,8 @@
 .sidebar {
   flex: 1;
   border-right: 3px solid #4a4563;
-  background-color: #0E1C36;
+  background-color: #0e1c36;
+  overflow-y: scroll;
 }
 .chat {
   flex: 2;
@@ -173,9 +174,7 @@ img {
   color: rgb(197, 214, 240);
   font-size: 12px;
 }
-.chats {
-  overflow-y: scroll;
-}
+
 .userChat {
   display: flex;
   border-bottom: 1px solid #080720;
@@ -213,11 +212,11 @@ img {
   width: 100%;
   color: white !important;
 }
-.chatInfo span{
+.chatInfo span {
   display: flex;
   align-items: center;
 }
-.chatInfo span img{
+.chatInfo span img {
   width: 50px;
   height: 50px;
 }
@@ -232,7 +231,7 @@ img {
   background-position: center;
 }
 .messages {
-  background-color: #5A7684;
+  background-color: #5a7684;
   background-image: url(pages/images/chatsbackground2.png);
   background-size: cover;
   background-position: center;
@@ -310,8 +309,8 @@ img {
   color: rgba(31, 24, 24, 0.657);
   font-size: 12px;
 }
-.owner .messageInfo sub { 
-  color:#ffffff9d;
+.owner .messageInfo sub {
+  color: #ffffff9d;
   font-size: 12px;
 }
 .message + .owner {
@@ -341,7 +340,7 @@ img {
   overflow: hidden;
 }
 .messageContent {
-   background-color: #033860;
+  background-color: #033860;
   padding: 5px;
   width: max-content;
   padding-bottom: 15px;
@@ -360,7 +359,7 @@ img {
   position: absolute;
   bottom: 3px;
   right: 5px;
-  color:#ffffff9d;
+  color: #ffffff9d;
 }
 .messageContent .sentImg {
   height: 250px;
@@ -404,4 +403,34 @@ img {
   width: 800px;
   object-fit: cover;
   border-radius: 0;
+}
+@media (max-width: 1000px) {
+  .homeContainer {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 600px) {
+  input{
+    font-size: 16px;
+  }
+  .hide {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  .show {
+    width: 100vh;
+    height: 100vh;
+    display: block;
+    flex: 1;
+  }
+  .dontShowChat {
+    flex: 0;
+    display: none;
+  }
+  .homeContainer {
+    width: 100%;
+    height: 100%;
+  }
 }

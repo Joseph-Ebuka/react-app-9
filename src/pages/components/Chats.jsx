@@ -3,10 +3,12 @@ import { AuthContext } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import { ChatContext } from "../../context/ChatContext";
+import { useSidebar } from "../../context/SideBarContext";
 const Chats = () => {
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
   const [chats, setChats] = useState([]);
+  const {toggleSidebar} = useSidebar()
 
   useEffect(() => {
     const getChats = () => {
@@ -27,6 +29,7 @@ const Chats = () => {
 
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
+    toggleSidebar()
   };
   return (
     <div className="chats">

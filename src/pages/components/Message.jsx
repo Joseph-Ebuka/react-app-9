@@ -36,6 +36,31 @@ const Message = ({ message }) => {
     "Thursday",
     "Friday",
     "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
   ];
   const dayOfWeek = daysOfWeek[normalDate.getDate()]; // Get the day of the week
 
@@ -43,7 +68,6 @@ const Message = ({ message }) => {
   const hours = normalDate.getHours();
   const minutes = normalDate.getMinutes();
   const amOrPm = hours >= 12 ? "PM" : "AM";
-
   // Convert to 12-hour format
   const formattedHours = hours % 12 || 12; // Handle 0 as 12
 

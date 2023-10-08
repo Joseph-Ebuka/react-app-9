@@ -12,12 +12,14 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
 
 const Search = () => {
   const [userName, setUserName] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
   const handleSearch = async () => {
     const matchingUsers = [];
 
@@ -81,14 +83,18 @@ const Search = () => {
           [combineId + ".date"]: serverTimestamp(),
         });
       }
+     
     } catch (err) {
       console.error(err);
     }
-
+  
     setUser(null);
     setUserName("");
     //create user cahts for jane ad john
   };
+  const selectUser = (u)=>{
+    dispatch({ type: "CHANGE_USER", payload: u });
+  }
   return (
     <div className="search">
       <div className="searchForm">
