@@ -12,7 +12,7 @@ import {
 import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { sent, recived } from "../../assets";
+import { sent } from "../../assets";
 const Inputs = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
