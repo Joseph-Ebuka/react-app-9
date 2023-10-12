@@ -12,7 +12,7 @@ import {
 import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { sent } from "../../assets";
+// import { sent } from "../../assets";
 const Inputs = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
@@ -21,7 +21,7 @@ const Inputs = () => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
   const imgId = uuid().toString();
-  const audio = new Audio(sent);
+  // const audio = new Audio(sent);
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -54,7 +54,7 @@ const Inputs = () => {
       );
     } else {
       if (text !== "") {
-        audio.play();
+        // audio.play();
         await updateDoc(doc(db, "chats", data.chatId), {
           messages: arrayUnion({
             id: uuid(),
