@@ -110,8 +110,12 @@ const Inputs = () => {
     });
   };
   listenForTypingStatus();
+  console.log(data)
   return (
     <form>
+      {!isTyping && <span style={{
+        backgroundColor:"transparent"
+      }}> {data.user.displayName} is typing...</span>}
       <div className="inputs">
         <input
           type="text"
