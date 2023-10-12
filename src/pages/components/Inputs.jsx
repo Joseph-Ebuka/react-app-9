@@ -48,7 +48,7 @@ const Inputs = () => {
                 });
               }
             );
-            audio.play();
+            // audio.play();
           }, 1000);
         }
       );
