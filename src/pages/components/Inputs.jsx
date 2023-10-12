@@ -110,7 +110,6 @@ const Inputs = () => {
     });
   };
   listenForTypingStatus();
-  console.log(data)
   return (
     <form>
       {!isTyping && <span style={{
